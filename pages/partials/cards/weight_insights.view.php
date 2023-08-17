@@ -2,6 +2,7 @@
     <span class="material-icons-sharp"> scale</span>
     <div class="middle">
     <div class="left">
+<<<<<<< HEAD
         <h3>Destinos más usados</h3>
         <div class = table>
         <table>
@@ -61,9 +62,28 @@
         <p><?php //echo $card6[0]->total_envios ?></p>
         <br>
         <p><?php //echo $card6[1]->total_envios ?></p>
+=======
+        <h3>Estado de envio</h3>
+        <h3><?php echo $card6 ?></h3>
+        <h1><?php foreach ($card6 as $card) {
+            echo $card->total_envios. "<br>";
+            }?>
+        </h1>       
+    </div>
+    <div class="progress">
+        <svg>
+        <circle cx="38" cy="38" r="36"></circle>
+        </svg>
+        <div class="number">
+        <p>75%</p>
+>>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
         </div>
     </div>
     </div>
     <small class="text-muted"> Ver más </small>
+<<<<<<< HEAD
 </div>
 -->
+=======
+</div>
+>>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896

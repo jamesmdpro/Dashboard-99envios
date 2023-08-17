@@ -1,6 +1,10 @@
 const RECENT_ORDER_DATA = [
     {
+<<<<<<< HEAD
       Numero_de_guia: "NADA",
+=======
+      Numero_de_guia: "12452551465",
+>>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
       Fecha_de_envio: "04/07/2023",
       payment: "Due",
       status: "Pending",

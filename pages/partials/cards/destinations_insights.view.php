@@ -2,7 +2,11 @@
     <span class="material-icons-sharp">emoji_objects</span>
     <div class="middle">
     <div class="left">
+<<<<<<< HEAD
         <h3>Destinos más usados</h3>
+=======
+        <h2>Destinos más usados</h2>
+>>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
         <h3><?php echo $card8[0]->ciudad_destino ?></h3>
         <h3><?php echo $card8[1]->ciudad_destino ?></h3>
     </div>

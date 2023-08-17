@@ -2,25 +2,61 @@ vendor
 vendor2
 .
 vendor2
+<<<<<<< HEAD
 env
+=======
+.env
+.env.example
+>>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
 node_modules
 build
 dist
 compiled
 .idea
 composer.lock
+<<<<<<< HEAD
 99envios.zip
 99envios/pages/images/
 /pages/images/
 
+=======
+
+99envios/pages/images/
+/pages/images/
+Storage
+>>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
 node_modules
 build
 dist
 compiled
 .idea
 composer.lock
+<<<<<<< HEAD
 99envios.zip
 99
+=======
+99
+/.phpunit.cache
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
+npm-debug.log
+yarn-error.log
+/.fleet
+/.idea
+/.vscode
+
+>>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
 
 node_modules
 build

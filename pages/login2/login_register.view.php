@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login register -Jampro</title>
     <link rel="stylesheet" href="pages/login2/estilos.css">
+<<<<<<< HEAD
     <link rel="icon" href="favicon.png" type="images/logo_2.png">
     
+=======
+>>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
 </head>
 <body>
 

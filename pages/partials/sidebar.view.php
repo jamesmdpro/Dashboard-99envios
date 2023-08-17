@@ -2,7 +2,11 @@
     <span class="material-icons-sharp"> dashboard </span>
     <h3>Dashboard</h3>
 </a>
+<<<<<<< HEAD
 <!--  <a href="#">
+=======
+<a href="#">
+>>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
     <span class="material-icons-sharp"> person_outline </span>
     <h3>Customers</h3>
 </a>
@@ -34,7 +38,11 @@
 <a href="#">
     <span class="material-icons-sharp"> add </span>
     <h3>Add Product</h3>
+<<<<<<< HEAD
 </a> --> 
+=======
+</a>
+>>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
 <a href="#">
     <span class="material-icons-sharp"> logout </span>
     <h3>Logout</h3>

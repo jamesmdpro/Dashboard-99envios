@@ -23,11 +23,19 @@
     <!-- Add updates div here | JS insertion -->
   </div>
   <!-----------------------SALES-ANALITICS------------------------------->
+<<<<<<< HEAD
   <!--<div class="sales-analytics">
     <h2>Sales Analytics</h2>
     <div id="analytics">-->
       <!-- Add items div he4Wre | JS insertion -->
     <!-- </div>
+=======
+  <div class="sales-analytics">
+    <h2>Sales Analytics</h2>
+    <div id="analytics">
+      <!-- Add items div he4Wre | JS insertion -->
+    </div>
+>>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
     <div class="item add-product">
       <div>
         <span class="material-icons-sharp"> add </span>
@@ -35,4 +43,8 @@
       </div>
     </div>
   </div>
+<<<<<<< HEAD
 </div>-->
+=======
+</div>
+>>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
