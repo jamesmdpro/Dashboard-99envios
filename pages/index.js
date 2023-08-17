@@ -28,15 +28,11 @@ document.addEventListener("DOMContentLoaded", (ev) => {
           <td>${row.Fecha_de_envio}</td>
           <td>${row.payment}</td>
           <td class="${row.statusColor}">${row.status}</td>
-<<<<<<< HEAD
+
           <td class="primary"></td> 
         </tr>
       `; //<td class="primary">NOMBRE DE LA ETIQUETA MAS DETALLES</td> 
-=======
-          <td class="primary">Details</td>
-        </tr>
-      `;
->>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
+
     }
   
     tbody.innerHTML = bodyContent;

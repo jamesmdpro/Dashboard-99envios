@@ -2,7 +2,7 @@
     <span class="material-icons-sharp"> stacked_line_chart </span>
     <div class="middle">
     <div class="left">
-<<<<<<< HEAD
+
         <h3>Estado Envios </h3>
         <div class = table>
         <table>
@@ -54,28 +54,12 @@
         <p><?php //echo $card5[0]->total_envios?></p>
         <br>
         <p><?php //echo $card5[1]->total_envios?></p>
-=======
-        <h3>Transportadora </h3>
-        <h1><?php echo $card5[0]->transportadora ?></h1>
-        <h1><?php echo $card5[0]->total_envios ?><style>h1 {
-                                        font-weight: 500;
-                                        font-size: 1.2rem;
-                                    }
-                            </style>
-                                </h1>
-    </div>
-    <div class="progress">
-        <svg>
-        <circle cx="38" cy="38" r="36"></circle>
-        </svg>
-        <div class="number">
-        <p>44%</p>
->>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
+
         </div>
     </div>
     </div>
     <small class="text-muted"> Ver más </small>
-<<<<<<< HEAD
+
 </div>
 
             <tr>
@@ -96,8 +80,3 @@
 
 
 -->
-
-
-=======
-</div>
->>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896

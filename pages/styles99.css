@@ -224,14 +224,12 @@ main {
 
 /* START DATE INPUT */
 main .date {
-<<<<<<< HEAD
+
   display: flex;
   align-self: start;
   justify-content: space-around;
   
-=======
-  display: inline-block;
->>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
+
   background: var(--color-light);
   border-radius: var(--border-radius-1);
   margin-top: 1rem;

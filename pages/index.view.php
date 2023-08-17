@@ -9,11 +9,9 @@
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
   <link rel="stylesheet" href="pages/styles99.css" />
-<<<<<<< HEAD
+
   <link rel="icon" href="favicon.png" type="pages/images/logo_2.png">
-=======
-  <link rel="icon" href="favicon.png" type="pages/images/logo.png">
->>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
+
 </head>
 
 <body>
@@ -37,7 +35,6 @@
     <main>
       <h1>Dashboard</h1>
 
-<<<<<<< HEAD
       <div class="date">
         <form id="consultaForm">
           <label for="fecha">Selecciona una fecha:</label>
@@ -45,12 +42,7 @@
           <button type="button" onclick="modificarConsulta()">Modificar Consulta</button>
         </form>
       </div>
-=======
-      <!--  HABILITAR  EN LA SIGUIENTE FASE 
-      <div class="date">
-        <input type="date" />
-      </div> -->
->>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
+
 
       <?php view('partials/insights.view.php', [
         'card1'=>$card1,
@@ -69,11 +61,9 @@
 
       
       <!--  HABILITAR  EN LA SIGUIENTE FASE   ESPACIO DE LA GRAFICA  -->
-<<<<<<< HEAD
+
       <?php /* view('partials/grafica/container_grafica_card1.view.php', [ ]); */?>
-=======
-      <?php/* view('partials/grafica/container_grafica_card1.view.php', [ ]); */?>
->>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
+
       
       <!--  HABILITAR  EN LA SIGUIENTE FASE PEDIDOS POR ORDEN DE COMPRA POR DIA  -->
       <?php view('partials/recent_orders.view.php');?>
