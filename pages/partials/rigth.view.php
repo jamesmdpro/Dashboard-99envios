@@ -9,7 +9,7 @@
     </div>
     <div class="profile">
       <div class="info">
-        <p>Aliados <b><br>Envíadores, Estrella</b></p>
+        <p>Aliados <b><br>Estrella</b></p>
         <small class="text-muted"></small>
       </div>
       <div class="profile-photo">

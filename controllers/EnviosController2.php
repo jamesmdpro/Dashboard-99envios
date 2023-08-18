@@ -23,6 +23,10 @@ class EnviosController2 extends Controller
 
         $destinos_mas_usados = $this->obtenerCiudadEnvios(27986);
 
+        /* TABLAS ORDENES Y CARTERA   */     
+        $ordenes_recientes = $this->obtenerOrdenesRecientes(27986);
+        $cartera_recientes = $this->obtenerCarteraCompleta(27986);
+
 
 
         /* Grafica  
@@ -41,12 +45,17 @@ class EnviosController2 extends Controller
 
             'card8'=>$destinos_mas_usados,
 
+            /* TABLAS ORDENES Y CARTERA   */ 
+            'card9'=>$ordenes_recientes,  
+            'card10'=>$cartera_recientes, 
 
 
             /* Grafica  
             'grafica'=>$envios_semana_a_semana,
             'grafica_total'=>$total_semana_grafica
             */
+
+
         ]);
     }
     /*-------- CARD 1       --------- */
@@ -112,31 +121,32 @@ class EnviosController2 extends Controller
     public function obtenerEstadoEnvio($codigo_sucursal) {
 
         $estados_envios_cartera = Cartera::selectRaw("
-        CASE
-            WHEN estado_del_envio = 'Entregada' THEN 'Entregado'
-            WHEN estado_del_envio = 'Cancelado' THEN 'Cancelado'
-            ELSE 'En movimiento'
-        END AS estado_transformado,
-        COUNT(*) AS total_envios
-        ")
+            CASE
+                WHEN estado_del_envio = 'Entregada' THEN 'Entregado'
+                WHEN estado_del_envio = 'Cancelado' THEN 'Cancelado'
+                ELSE 'En movimiento'
+            END AS estado_transformado,
+            COUNT(*) AS total_envios
+            ")
         ->where('codigo_sucursal', $codigo_sucursal)
         ->groupBy('estado_transformado')
         ->orderByDesc('total_envios')
         ->get();
-        
-    return $estados_envios_cartera;
+
+        return $estados_envios_cartera;
 }
+
     /*-------- CARD 6       --------- */
     public function obtenerCiudadEnvios($codigo_sucursal){
 
-    $destinos_mas_usados = Envios::select('ciudad_destino', Envios::raw('COUNT(*) as total_envios'))
-        ->where('codigo_sucursal', $codigo_sucursal)
-        ->groupBy('ciudad_destino')
-        ->orderByDesc('total_envios')
-        ->take(2)
-        ->get();
-    
-    return $destinos_mas_usados;
+        $destinos_mas_usados = Envios::select('ciudad_destino', Envios::raw('COUNT(*) as total_envios'))
+            ->where('codigo_sucursal', $codigo_sucursal)
+            ->groupBy('ciudad_destino')
+            ->orderByDesc('total_envios')
+            ->take(2)
+            ->get();
+        
+        return $destinos_mas_usados;
 
     }
 
@@ -146,8 +156,6 @@ class EnviosController2 extends Controller
 
         $estado_de_pago_envios = Envios::select('estado_de_pago', Envios::raw('COUNT(*) as total_envios'))
             ->where('codigo_sucursal', $codigo_sucursal)
-            ->where('fecha_envio', '>=', Envios::raw("DATE_FORMAT(NOW(), '%Y-%m-05')"))
-            ->where('fecha_envio', '<', Envios::raw("DATE_ADD(DATE_FORMAT(fecha_envio, '%Y-%m-05'), INTERVAL 1 MONTH)"))
             ->groupBy('estado_de_pago')
             ->orderByDesc('total_envios')
             ->take(3)
@@ -158,7 +166,7 @@ class EnviosController2 extends Controller
 
    
     }
-    /*---- TRANSPORTADORA    ULTIMA TRAJETA---*/
+    /*---- TRANSPORTADORA    CARD 8--*/
 
     public function obtenerTransportadora($codigo_sucursal){
 
@@ -191,8 +199,40 @@ class EnviosController2 extends Controller
 
 
 
-    /*-------- ORDENES RECIENTES      --------- 
-        SELECT
+    /*-------- ORDENES RECIENTES  CARD 9    --------- 
+  
+*/
+    public function obtenerOrdenesRecientes($codigo_sucursal){
+
+        $ordenes_recientes = Envios::select('numero_de_guia', 'fecha_envio', 'ciudad_destino', 'valor_comercial', 'Producto')
+        ->selectRaw("ROW_NUMBER() OVER (PARTITION BY codigo_sucursal ORDER BY fecha_envio DESC) AS row_num")
+        ->orderBy('codigo_sucursal')
+        ->orderBy('fecha_envio', 'desc')
+        ->limit(15)
+        ->get();
+    
+            return $ordenes_recientes;
+}
+/*-------- CARTERA COMPLETA  CARD 10    --------- 
+  
+*/
+    public function obtenerCarteraCompleta($codigo_sucursal){
+
+        $cartera_recientes = Cartera::select('numero_de_guia', 'valor_comercial', 'valor_flete', 'valor_consignado', 'estado_del_envio')
+        ->selectRaw("ROW_NUMBER() OVER (PARTITION BY codigo_sucursal ORDER BY fecha_de_consignacion DESC) AS row_num")
+        ->orderBy('codigo_sucursal')
+        ->orderBy('fecha_de_consignacion', 'desc')
+        ->limit(15)
+        ->get();
+
+            return $cartera_recientes;
+    }
+
+}// FIN DE LA CLASS ENVIOSCONTROLLER2
+
+/*  CARD9 TRASFORMADAS  SQL Y ORM
+
+      SELECT
             numero_de_guia AS Numero_de_guia,
             fecha_envio AS Fecha_de_envio,
             valor_comercial AS payment,
@@ -208,40 +248,42 @@ class EnviosController2 extends Controller
             END AS statusColor
         FROM envioscompleto
         WHERE codigo_sucursal = 27986;
-*/
+
+
+
+
     public function obtenerOrdenesRecientes($codigo_sucursal){
 
         $ordenes_recientes = Envios::selectRaw([
             'numero_de_guia as Numero_de_guia',
             'fecha_envio as Fecha_de_envio',
             'valor_comercial as payment',
-            \Envios::raw("CASE WHEN estado_del_envio = 'Delivered' THEN 'Entregado'
+            Envios::raw("CASE WHEN estado_del_envio = 'Delivered' THEN 'Entregado'
                           WHEN estado_del_envio = 'Declined' THEN 'Cancelado'
                           ELSE 'En movimiento'
                      END AS estado_transformado"),
-            \Envios::raw("CASE WHEN estado_del_envio = 'Delivered' THEN 'primary'
+            Envios::raw("CASE WHEN estado_del_envio = 'Delivered' THEN 'primary'
                           WHEN estado_del_envio = 'Declined' THEN 'danger'
                           ELSE 'warning'
                      END AS statusColor"),
         ])
         ->where('codigo_sucursal', $codigo_sucursal)
-        ->take(7)
+        ->take(1)
         ->get();
     
-    // Convertir los datos a formato JSON
-    $jsonData = json_encode($ordenes_recientes, JSON_PRETTY_PRINT);
+        return $ordenes_recientes;
+
+
+    }
+        // Convertir los datos a formato JSON
+    //$jsonData = json_encode($ordenes_recientes, JSON_PRETTY_PRINT);
     
     // Definir la ruta del archivo JSON
-    $rutaArchivoJson = base_path('app/99envios/json_data/recent-order-data.js');
+    //$rutaArchivoJson = base_path('app/99envios/json_data/recent-order-data.js');
     
     // Escribir los datos en el archivo JSON
-    file_put_contents($rutaArchivoJson, 'const RECENT_ORDER_DATA = ' . $jsonData . ';');
-   
-}
-
-}// FIN DE LA CLASS ENVIOSCONTROLLER2
-
-
+    //file_put_contents($rutaArchivoJson, 'const RECENT_ORDER_DATA = ' . $jsonData . ';');
+    */
 
 
 

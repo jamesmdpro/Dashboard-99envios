@@ -27,4 +27,4 @@ class ModificarConsulta extends Controller
         // Devolver el resultado de la consulta modificado
         return view('consulta/consulta_result.view.php', ['resultado' => $resultadoConsulta]);
     }
-}
+} 

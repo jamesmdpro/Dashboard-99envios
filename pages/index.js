@@ -1,7 +1,7 @@
 // Executes when document is loaded
 document.addEventListener("DOMContentLoaded", (ev) => {
     // Recent Orders Data
-    document.getElementById("recent-orders--table").appendChild(buildTableBody());
+    //document.getElementById("recent-orders--table").appendChild(buildTableBody());
   
     // Updates Data
     document

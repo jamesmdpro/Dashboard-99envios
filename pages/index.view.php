@@ -66,10 +66,22 @@
 
       
       <!--  HABILITAR  EN LA SIGUIENTE FASE PEDIDOS POR ORDEN DE COMPRA POR DIA  -->
-      <?php view('partials/recent_orders.view.php');?>
+           
+      <?php view('partials/recent_orders.view.php', [
+        'card9'=>$card9,
+      ]);?>
+
+      <?php view('partials/cartera_completa.view.php', [
+              'card10'=>$card10,
+            ]);?>
+
+      
 
       <!--   IMPLEMENTAR ALGO DE UTILIDAD  -->
-      <?php view('partials/rigth.view.php'); ?>
+      <?php view('partials/rigth.view.php', [
+        
+
+      ]); ?>
       
       
       

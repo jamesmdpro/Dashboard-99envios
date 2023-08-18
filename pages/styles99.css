@@ -694,6 +694,47 @@ main .recent-orders a {
   color: var(--color-primary);
 }
 /* END RECENT ORDERS */
+cartera-completa
+/* START CARTERA COMPLETA */
+main .cartera-completa {
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+}
+main .cartera-completa h2 {
+  margin-bottom: 0.8rem;
+}
+main .cartera-completa table {
+  background: var(--color-white);
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  transition: all 300ms ease;
+}
+main .cartera-completa table:hover {
+  cursor: pointer;
+  box-shadow: none;
+}
+main table tbody td {
+  height: 2.8rem;
+  border-bottom: 1px solid var(--color-light);
+  color: var(--color-dark-variant);
+}
+main table tbody tr:last-child td {
+  border: none;
+}
+main .cartera-completa a {
+  text-align: center;
+  display: block;
+  margin: 1rem auto;
+  color: var(--color-primary);
+}
+/* END RECENT ORDERS */
+
+
+
 
 /* START RIGHT SECTION */
 .right {
