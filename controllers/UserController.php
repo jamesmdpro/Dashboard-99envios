@@ -49,22 +49,24 @@ class UserController extends Controller
     }
     public function login() {
 
-        $user_email = request()->get('correo');  // Ajusta 'correo' a 'email' según tu formulario
-        $password  = request()->get('contrasena'); // Ajusta 'contrasena' a 'password' según tu formulario
+        $user_email = request()->postData('user_email');
+        $password = request()->postData('user_pass');
+        $codigo_sucursal = request()->postData('usuario'); // CODIGO DE SUCURSAL
     
-        // Llamamos al objeto $auth y utilizamos el método login() para intentar iniciar sesión
-        $user = $auth->login([
-            'correo' => $user_email,
-            'contrasena' =>  $password ,
-        ]);
+        $user = User::where('correo', $user_email)->first(['contrasena']);
+        
+        if ($user && password_verify($password , $user->contrasena)) {              
+        
+            // Autenticación exitosa
+          // auth::$session->set('loggedIn', true);
     
-        if (!$user) {
-            // La autenticación falló, redirigir al formulario de inicio de sesión con mensaje de error
-            return view('login2/login_register.view.php');
-        } else {
-            // La autenticación fue exitosa, redirigir al usuario a la página principal
             response()->page(viewsPath('index.view.html', false));
+
+        } else {
+            // Autenticación fallida
+            return view('login2/login_register.view.php');
         }
-    }
+        
+    }               
 
 }

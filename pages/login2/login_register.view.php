@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login register -Jampro</title>
+    <title>Login register 99envios</title>
     <link rel="stylesheet" href="pages/login2/estilos.css">
-<<<<<<< HEAD
+
     <link rel="icon" href="favicon.png" type="images/logo_2.png">
     
-=======
->>>>>>> c2bb1c885d1679b4002e9c09fc825c73dd844896
+
 </head>
 <body>
 
@@ -26,7 +25,7 @@
                 <div class="caja_trasera-register">
                     <h3>¿Aún no tienes una cuenta?</h3>
                     <p>Regístrate para que puedas iniciar sesión</p>
-                    <button id="btn__registrarse">Regístrarse</button>
+                    <button id="btn__registrarse" type="button">Regístrarse</button>
                 </div>
             </div>
             <!--  Formulario de login y registro-->
@@ -34,6 +33,7 @@
                 <form method="POST" class="formulario__login">
                     <h2>Iniciar Sesión</h2>
                     <input type="text" placeholder="Correo Electronico" name="user_email">
+                    <input type="number" placeholder="Codigo Sucursal"  name="usuario"><!-- CODIGO SUCURSAL --> 
                     <input type="password" placeholder="Contraseña"     name="user_pass">    
                     <button>Entrar</button>
                 </form>
@@ -42,7 +42,7 @@
                     <h2>Regístrarse</h2>
                     <input type="text" placeholder="Nombre Completo"    name="nombre_completo">
                     <input type="text" placeholder="Correo Electronico" name="correo">
-                    <input type="text" placeholder="Codigo sucursal"            name="usuario">
+                    <input type="text" placeholder="Codigo sucursal"    name="usuario"> <!-- CODIGO SUCURSAL -->
                     <input type="password" placeholder="Contraseña"     name="contrasena">
                     <button >Regístrarse</button>
                 </form>

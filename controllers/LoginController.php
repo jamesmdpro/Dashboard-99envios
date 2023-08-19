@@ -16,22 +16,28 @@ class LoginController extends Controller
     } 
     // Inicio de sesión
     public function login() {
-        $user_email = request()->postData('user_email');
-        $password = request()->postData('user_pass');
+    $user_email = request()->postData('user_email');
+    $usuario = request()->postData('usuario'); // CODIGO DE SUCURSAL
+    $password = request()->postData('user_pass');
     
-        $user = User::where('correo', $user_email)->first(['contrasena']);
-        
-        if ($user && password_verify($password , $user->contrasena)) {              
-        
-            // Autenticación exitosa
-          // auth::$session->set('loggedIn', true);
+
+    $user = User::where('correo', $user_email)->first(['contrasena']);
     
-            response()->page(viewsPath('index.view.html', false));
-        } else {
-            // Autenticación fallida
-            return view('login2/login_register.view.php');
-        }
-        
-    }               
+    if ($user && password_verify($password , $user->contrasena)) {              
+    
+        // Autenticación exitosa
+        // auth::$session->set('loggedIn', true);
+
+        response()->page(viewsPath('index.view.html', false),index  );
+
+    } else {
+        // Autenticación fallida
+        return view('login2/login_register.view.php');
+    }
+    
+}               
 
 }
+/*$data = [
+                'usuario' => $usuario,
+            ];*/

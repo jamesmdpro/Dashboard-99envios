@@ -36,7 +36,7 @@
       <h1>Dashboard</h1>
 
       <div class="date">
-        <form id="consultaForm">
+        <form id="consultaForm" method="POST">
           <label for="fecha">Selecciona una fecha:</label>
           <input type="date" id="fecha" name="fecha">
           <button type="button" onclick="modificarConsulta()">Modificar Consulta</button>

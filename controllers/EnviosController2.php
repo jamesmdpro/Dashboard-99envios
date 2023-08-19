@@ -8,6 +8,7 @@ use Models\Cartera;
 use Carbon\Carbon;
 
 
+
 class EnviosController2 extends Controller
 {
     public function index() {
@@ -30,8 +31,8 @@ class EnviosController2 extends Controller
 
 
         /* Grafica  
-        $envios_semana_a_semana = $this->obtenerCiudadEnvios(27986);
-        $total_semana_grafica = $this->graficaTotalEnviosSemana(27986);
+        $envios_semana_a_semana = $this->obtenerCiudadEnvios($usuario);
+        $total_semana_grafica = $this->graficaTotalEnviosSemana($usuario);
 */
 
         return view('index.view.php',  [
@@ -63,7 +64,6 @@ class EnviosController2 extends Controller
 
         $total_envios_365 = Envios::where('codigo_sucursal', $codigo_sucursal)
             ->count();
-            
     
         return $total_envios_365;
     }
@@ -104,7 +104,7 @@ class EnviosController2 extends Controller
             END AS estado_transformado,
             COUNT(*) AS total_envios
         FROM cateracompleta
-        WHERE codigo_sucursal = 27986
+        WHERE codigo_sucursal = $usuario
         GROUP BY estado_transformado
         ORDER BY total_envios DESC;    
 
@@ -112,10 +112,10 @@ class EnviosController2 extends Controller
 
         SELECT `estado_del_envio`, COUNT(*) as `total_envios`
         FROM `cateracompleta`
-        WHERE `codigo_sucursal` = 27986
+        WHERE `codigo_sucursal` = $usuario
         GROUP BY `estado_del_envio`
         ORDER BY `total_envios` DESC;       
-}
+    }
 
     */
     public function obtenerEstadoEnvio($codigo_sucursal) {
@@ -247,7 +247,7 @@ class EnviosController2 extends Controller
                 ELSE 'warning'
             END AS statusColor
         FROM envioscompleto
-        WHERE codigo_sucursal = 27986;
+        WHERE codigo_sucursal = $usuario;
 
 
 

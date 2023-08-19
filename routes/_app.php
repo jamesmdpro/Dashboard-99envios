@@ -19,7 +19,7 @@ app()->get("/home", 'EnviosController2@index' );
 
 app()->get('/registro',  'UserController@showRegistrationForm');
 app()->post('/registro', 'UserController@register');
-//app()->post('/registro', 'LoginController@login'); comflicto de de acciones
+
 
 //Login usuarios 
 app()->get('/login',  'LoginController@showRegistrationForm2');
